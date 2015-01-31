@@ -1,3 +1,5 @@
+"use strict";
+
 var countiesData = {
 "type": "FeatureCollection",
                                                                                 

@@ -126,13 +126,14 @@ function populateExtendedInfo(thingie) {
 	$('#infoBox p').text(thingie.Summary);
 	var imageToUse = false;
 	_.forEach(thingie.Images, function (image) {
-		if(!imageToUse && (image.Url).toLowerCase().indexOf('.jpg') !== -1) {
+		if((image.Url).toLowerCase().indexOf('.jpg') !== -1) {
 			imageToUse = image.Url;
 			console.log(imageToUse);
 		}
 	});
 
 	if(imageToUse) {
+		$('#infoBox img').fadeIn(100)
 		$('#infoBox img').attr('src', imageToUse)
 	} else {
 		$('#infoBox img').hide()

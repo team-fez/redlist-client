@@ -91,7 +91,7 @@ html, body {
 	text-transform: capitalize;
 }
 
-#infoList li:hover, #infoList.active {
+#infoList li:hover, #infoList .active {
 	cursor: pointer;
 	background: #4D4D4D;
 	color: white;

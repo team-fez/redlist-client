@@ -186,6 +186,6 @@ var updateCountyDensities = function  updateCountyDensities (data) {
 		style: style,
 		onEachFeature: onEachFeature
 	}).addTo(map);
-
+	map.removeControl(legend);
 	legend.addTo(map);
 };

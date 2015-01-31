@@ -26,7 +26,7 @@ info.onAdd = function (map) {
 info.update = function (props) {
 	this._div.innerHTML = '<h4>Endangered species</h4>' +  (props ?
 		'<b>' + props.NAVN + '</b><br />' + props.density + ' endangered species'
-		: 'Hover over a counties');
+		: 'Hover over a county');
 };
 
 info.addTo(map);
@@ -128,7 +128,7 @@ function populateExtendedInfo(thingie) {
 	if(imageToUse) {
 		$('#infoBox img').attr('src', image)
 	}
-	
+
 	$('#infoBox a').attr('href', thingie.WikipediaUrl);
 	$('#infoBox').fadeIn(100);
 }

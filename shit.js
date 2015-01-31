@@ -82,7 +82,7 @@ function zoomToFeature(e) {
 // TODO: implement me =D
 function populateSpeciesList(county) {
 
-	$('#activeCounty').text(county.replace('_', ' ')).fadeIn(100);
+	$('#activeCounty').text(county.replace(/_/g, ' ')).fadeIn(100);
 
 	$.ajax({
 		type: 'GET',

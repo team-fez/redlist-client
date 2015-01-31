@@ -25,7 +25,7 @@ function setMax(max)
         var steps = Math.pow(max, 1/8);
 
         for (var i = rangeArray.length - 1; i >= 0; i--) {
-            rangeArray[i] = Math.ceil(i * steps);
+            rangeArray[i] = Math.ceil(Math.pow(steps, i));
         };
     }   
     else

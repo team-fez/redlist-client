@@ -80,15 +80,29 @@ function populateSpeciesList(county) {
 		type: 'GET',
 		dataType: 'jsonp',
 		data: {},
-		url: "http://192.168.2.4:50288/api/Location/GetCountOnLocation?callback=?",
+		url: "http://192.168.2.4:50288/api/Location/GetSpeciesByCounty?county=" + county + "&callback=?",
 		error: function (jqXHR, textStatus, errorThrown) {
 			
 		},
 		success: function (data) {
+			console.log(data);
 
+			_.forEach(data, function (plant) {
+				console.log(plant);
+				var norName = plant.NorwegianName,
+						latinName = plant.Name,
+						category = plant.Category;
+				console.log($('#infoList'));
+				$('#infoList').append("<li>" + norName + "</li>");
+				$('#infoList li').each(function (index) {
+					$(this).click(function () {
+						console.log("Lol " + index);
+					});
+				});
+
+			});
 
 			$('#infoList').fadeIn(500);
-			updateCountyDensities(data);
 		}
 	});
 
@@ -100,7 +114,7 @@ function onEachFeature(feature, layer) {
 		mouseout: resetHighlight,
 		click: function (e) {
 			zoomToFeature(e);
-			alert(feature.properties.NAVN)
+			populateSpeciesList(feature.properties.NAVN);
 		}//zoomToFeature
 	});
 }

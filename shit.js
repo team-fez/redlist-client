@@ -135,7 +135,7 @@ function populateExtendedInfo(thingie) {
 		$('#infoBox img').hide()
 	}
 
-	$('#infoBox a').attr('href', thingie.WikipediaUrl);
+	$('#infoBox a').attr('href', thingie.WikiUrl);
 	$('#infoBox').fadeIn(100);
 }
 

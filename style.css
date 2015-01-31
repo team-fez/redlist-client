@@ -84,14 +84,14 @@ html, body {
 	color: #4D4D4D;
 	position: relative;
 	box-sizing: border-box;
-	font-size: 15px;
+	font-size: 14px;
 	padding-left: 35px;
 	word-break: break-all;
 
 	text-transform: capitalize;
 }
 
-#infoList li:hover {
+#infoList li:hover, #infoList.active {
 	cursor: pointer;
 	background: #4D4D4D;
 	color: white;

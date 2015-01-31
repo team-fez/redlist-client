@@ -108,6 +108,9 @@ function populateSpeciesList(county) {
 			$('#infoList li').click(function () {
 					console.log("Lol ");
 
+					$('#infoList li.active').removeClass('active');
+					$(this).addClass('active');
+
 					// Send object
 					populateExtendedInfo(species[$(this).attr('data-id')]);
 			});

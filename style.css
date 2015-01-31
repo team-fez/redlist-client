@@ -41,6 +41,9 @@ html, body {
 .lc {
 	background: #FFEDA0;
 }
+.dd {
+	background: #ddd;
+}
 
 #infoList {
 	display: none;

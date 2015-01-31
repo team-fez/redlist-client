@@ -1,3 +1,5 @@
+"use strict";
+
 // Ruben's IP =D
 var serverUrl = "?callback=yay";
 

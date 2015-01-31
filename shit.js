@@ -1,4 +1,4 @@
-
+"use strict";
 var map = L.map('map').setView([60, 5], 4);
 
 L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {

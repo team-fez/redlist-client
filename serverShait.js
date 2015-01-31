@@ -1,7 +1,7 @@
 "use strict";
 
 // Ruben's IP =D
-var serverUrl = "?callback=shait";
+var serverUrl = "http://localhost:50288/api/Location/GetSpecies?callback=shait";
 
 $.getJSON(serverUrl, function (data) {
 	console.log('GREAT SUCCESS!');
@@ -13,27 +13,27 @@ $.getJSON(serverUrl, function (data) {
 	console.log('HORRIBLE FAILURE =(');
 })
 .always(function (data) {
-  data = [
-    {name: "Sør-Trøndelag", density: Math.round(Math.random() * Math.round(Math.random() * 100))},
-    {name: "Nord-Trøndelag", density: Math.round(Math.random() * 100)},
-    {name: "Nordland", density: Math.round(Math.random() * 100)},
-    {name: "Troms", density: Math.round(Math.random() * 100)},
-    {name: "Finnmark", density: Math.round(Math.random() * 100)},
-    {name: "Vestfold", density: Math.round(Math.random() * 100)},
-    {name: "Østfold", density: Math.round(Math.random() * 100)},
-    {name: "Oslo", density: Math.round(Math.random() * 100)},
-    {name: "Akershus", density: Math.round(Math.random() * 100)},
-    {name: "Buskerud", density: Math.round(Math.random() * 100)},
-    {name: "Oppland", density: Math.round(Math.random() * 100)},
-    {name: "Hedmark", density: Math.round(Math.random() * 100)},
-    {name: "Vest-Agder", density: Math.round(Math.random() * 100)},
-    {name: "Aust-Agder", density: Math.round(Math.random() * 100)},
-    {name: "Rogaland", density: Math.round(Math.random() * 100)},
-    {name: "Telemark", density: Math.round(Math.random() * 100)},
-    {name: "Hordaland", density: Math.round(Math.random() * 100)},
-    {name: "Sogn og Fjordane", density: Math.round(Math.random() * 100)},
-    {name: "Møre og Romsdal", density: Math.round(Math.random() * 100)}
-  ];
+  data = {
+    "Sør-Trøndelag": Math.round(Math.random() * 100),
+    "Nord-Trøndelag": Math.round(Math.random() * 100),
+    "Nordland": Math.round(Math.random() * 100),
+    "Troms": Math.round(Math.random() * 100),
+    "Finnmark": Math.round(Math.random() * 100),
+    "Vestfold": Math.round(Math.random() * 100),
+    "Østfold": Math.round(Math.random() * 100),
+    "Oslo": Math.round(Math.random() * 100),
+    "Akershus": Math.round(Math.random() * 100),
+    "Buskerud": Math.round(Math.random() * 100),
+    "Oppland": Math.round(Math.random() * 100),
+    "Hedmark": Math.round(Math.random() * 100),
+    "Vest-Agder": Math.round(Math.random() * 100),
+    "Aust-Agder": Math.round(Math.random() * 100),
+    "Rogaland": Math.round(Math.random() * 100),
+    "Telemark": Math.round(Math.random() * 100),
+    "Hordaland": Math.round(Math.random() * 100),
+    "Sogn og Fjordane": Math.round(Math.random() * 100),
+    "Møre og Romsdal": Math.round(Math.random() * 100)
+  };
 
-  console.log(data);
+  updateCountyDensities(data);
 });

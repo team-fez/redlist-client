@@ -1,4 +1,3 @@
-
 var map = L.map('map').setView([65, 5], 4);
 
 L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
@@ -76,10 +75,10 @@ function onEachFeature(feature, layer) {
 	});
 }
 
-geojson = L.geoJson(countiesData, {
-	style: style,
-	onEachFeature: onEachFeature
-}).addTo(map);
+// geojson = L.geoJson(countiesData, {
+// 	style: style,
+// 	onEachFeature: onEachFeature
+// }).addTo(map);
 
 map.attributionControl.addAttribution('Population data &copy; <a href="http://census.gov/">US Census Bureau</a>');
 
@@ -106,4 +105,22 @@ legend.onAdd = function (map) {
 	return div;
 };
 
-legend.addTo(map);
+
+var updateCountyDensities = function  updateCountyDensities (data) {
+	console.log(data);
+	_.forEach(countiesData.features, function (feature) {
+		feature.properties.density = data[feature.properties.NAVN];
+	});
+
+	var max = _.max(data);
+
+	setMax(max);
+	console.log(max);
+
+	geojson = L.geoJson(countiesData, {
+		style: style,
+		onEachFeature: onEachFeature
+	}).addTo(map);
+
+	legend.addTo(map);
+};

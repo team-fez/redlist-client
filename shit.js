@@ -20,7 +20,7 @@ info.onAdd = function (map) {
 
 info.update = function (props) {
 	this._div.innerHTML = '<h4>Endangered species</h4>' +  (props ?
-		'<b>' + props.name + '</b><br />' + props.density + ' people / mi<sup>2</sup>'
+		'<b>' + props.name + '</b><br />' + props.density + ' endangered species'
 		: 'Hover over a counties');
 };
 

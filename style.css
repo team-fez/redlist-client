@@ -75,7 +75,11 @@ html, body {
 	top: 30px;
 	font-size: 30px;
 
-	text-shadow: 0px 0px 2px white;
+    text-shadow:
+    -1px -1px 0 white,
+    1px -1px 0 white,
+    -1px 1px 0 white,
+    1px 1px 0 white;
 }
 
 #infoList li {

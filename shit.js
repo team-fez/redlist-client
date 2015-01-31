@@ -74,6 +74,26 @@ function zoomToFeature(e) {
 	map.fitBounds(e.target.getBounds());
 }
 
+// TODO: implement me =D
+function populateSpeciesList(county) {
+	$.ajax({
+		type: 'GET',
+		dataType: 'jsonp',
+		data: {},
+		url: "http://192.168.2.4:50288/api/Location/GetCountOnLocation?callback=?",
+		error: function (jqXHR, textStatus, errorThrown) {
+			
+		},
+		success: function (data) {
+
+
+			$('#infoList').fadeIn(500);
+			updateCountyDensities(data);
+		}
+	});
+
+}
+
 function onEachFeature(feature, layer) {
 	layer.on({
 		mouseover: highlightFeature,
@@ -120,10 +140,10 @@ legend.addTo(map);
 var control = L.easyButton(
 	'fa-signal', 
   function () {
-  	options.logaritmicScale = !options.logaritmicScale;
-  	setMax(max);
-  	map.removeLayer(geojson);
-  	geojson = L.geoJson(countiesData, {
+	options.logaritmicScale = !options.logaritmicScale;
+	setMax(max);
+	map.removeLayer(geojson);
+	geojson = L.geoJson(countiesData, {
 			style: style,
 			onEachFeature: onEachFeature
 		}).addTo(map);
@@ -131,7 +151,7 @@ var control = L.easyButton(
 		map.removeControl(legend);
 		legend.addTo(map);
 
-  	console.log(map);
+	console.log(map);
   },
   'Logarithmic scale?'
 );

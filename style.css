@@ -9,6 +9,42 @@ html, body {
 	height: 100%;
 }
 
+#infoBox {
+
+}
+
+#infoList {
+	background: rgba(255,255,255,0.7);
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	top: 120px;
+	width: 150px;
+	margin: 0;
+	padding: 10px;
+
+	overflow:auto;
+
+	box-shadow: 0px 0px 5px rgba(0,0,0,0.7);
+
+	border-top-right-radius: 5px;
+}
+
+#infoList li {
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	width: 100%;
+	color: #4D4D4D;
+	padding-left: 6px;
+}
+
+#infoList li:hover {
+	cursor: pointer;
+	background: #4D4D4D;
+	color: white;
+}
+
 .info {
 	padding: 6px 8px;
 	font: 14px/16px Arial, Helvetica, sans-serif;

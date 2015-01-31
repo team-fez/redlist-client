@@ -72,7 +72,10 @@ function onEachFeature(feature, layer) {
 	layer.on({
 		mouseover: highlightFeature,
 		mouseout: resetHighlight,
-		click: zoomToFeature
+		click: function (e) {
+			zoomToFeature(e);
+			alert(feature.properties.NAVN)
+		}//zoomToFeature
 	});
 }
 

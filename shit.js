@@ -98,7 +98,7 @@ function populateSpeciesList(county) {
 						latinName = plant.Name,
 						category = (plant.Category).toLowerCase();
 				console.log($('#infoList'));
-				$('#infoList').append("<li data-id="+index+'><span class="extinctionColor ' + category ' + " style="background: ' + colorFromSomewhere + ';"></span>' + norName + "</li>");
+				$('#infoList').append("<li data-id="+index+'><span class="extinctionColor ' + category + '"></span>' + norName + "</li>");
 			
 			});
 

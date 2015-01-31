@@ -20,7 +20,7 @@ info.onAdd = function (map) {
 
 info.update = function (props) {
 	this._div.innerHTML = '<h4>Endangered species</h4>' +  (props ?
-		'<b>' + props.name + '</b><br />' + props.density + ' endangered species'
+		'<b>' + props.NAVN + '</b><br />' + props.density + ' endangered species'
 		: 'Hover over a counties');
 };
 
@@ -84,28 +84,34 @@ function populateSpeciesList(county) {
 		error: function (jqXHR, textStatus, errorThrown) {
 			
 		},
-		success: function (data) {
+		success: function (species) {
 			console.log(data);
-
-			_.forEach(data, function (plant) {
+			$('#infoList').empty();
+			_.forEach(species, function (plant,index) {
 				console.log(plant);
 				var norName = plant.NorwegianName,
 						latinName = plant.Name,
 						category = plant.Category;
 				console.log($('#infoList'));
-				$('#infoList').append("<li>" + norName + "</li>");
-				$('#infoList li').each(function (index) {
-					$(this).click(function () {
-						console.log("Lol " + index);
-					});
-				});
+				$('#infoList').append("<li data-id="+index+">" + norName + "</li>");
+			
+			});
 
+			$('#infoList li').click(function () {
+					console.log("Lol ");
+
+					// Send object
+					populateExtendedInfo(species[$(this).attr('data-id')]);
 			});
 
 			$('#infoList').fadeIn(500);
 		}
 	});
 
+}
+
+function populateExtendedInfo(thingie) {
+	// DO POPULATION =)
 }
 
 function onEachFeature(feature, layer) {

@@ -81,6 +81,9 @@ function zoomToFeature(e) {
 
 // TODO: implement me =D
 function populateSpeciesList(county) {
+
+	$('#activeCounty').text(county.replace('_', ' ')).fadeIn(100);
+
 	$.ajax({
 		type: 'GET',
 		dataType: 'jsonp',
@@ -98,7 +101,7 @@ function populateSpeciesList(county) {
 						latinName = plant.Name,
 						category = (plant.Category).toLowerCase();
 				console.log($('#infoList'));
-				$('#infoList').append("<li data-id="+index+'><span class="extinctionColor ' + category + '"></span>' + norName + "</li>");
+				$('#infoList').append("<li data-id="+index+'><span class="extinctionColor ' + category + '"></span>' + norName[0].toUpperCase() + norName.substring(1, norName.length-1) + "</li>");
 			
 			});
 
@@ -128,6 +131,8 @@ function populateExtendedInfo(thingie) {
 
 	if(imageToUse) {
 		$('#infoBox img').attr('src', imageToUse)
+	} else {
+		$('#infoBox img').hide()
 	}
 
 	$('#infoBox a').attr('href', thingie.WikipediaUrl);

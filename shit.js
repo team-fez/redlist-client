@@ -96,9 +96,9 @@ function populateSpeciesList(county) {
 				console.log(plant);
 				var norName = plant.NorwegianName,
 						latinName = plant.Name,
-						category = plant.Category;
+						category = (plant.Category).toLowerCase();
 				console.log($('#infoList'));
-				$('#infoList').append("<li data-id="+index+">" + norName + "</li>");
+				$('#infoList').append("<li data-id="+index+'><span class="extinctionColor ' + category ' + " style="background: ' + colorFromSomewhere + ';"></span>' + norName + "</li>");
 			
 			});
 

@@ -8,6 +8,11 @@ L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
 	id: 'examples.map-20v6611k'
 }).addTo(map);
 
+// Bind close button
+$('#close').click(function () {
+	$('#infoBox').fadeOut(100);
+});
+
 
 // control that shows state info on hover
 var info = L.control();
@@ -104,14 +109,28 @@ function populateSpeciesList(county) {
 					populateExtendedInfo(species[$(this).attr('data-id')]);
 			});
 
-			$('#infoList').fadeIn(500);
+			$('#infoList').fadeIn(100);
 		}
 	});
 
 }
 
 function populateExtendedInfo(thingie) {
-	// DO POPULATION =)
+	$('#infoBox h1').text(thingie.Name + ' (' + thingie.NorwegianName + ')');
+	$('#infoBox p').text(thingie.Summary);
+	var imageToUse = false;
+	_.forEach(thingie.Images, function (image) {
+		if(!imageToUse && image.toLowerCase().indexOf('.jpg') !== -1) {
+			imageToUse = image;
+		}
+	});
+
+	if(imageToUse) {
+		$('#infoBox img').attr('src', image)
+	}
+	
+	$('#infoBox a').attr('href', thingie.WikipediaUrl);
+	$('#infoBox').fadeIn(100);
 }
 
 function onEachFeature(feature, layer) {

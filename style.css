@@ -25,12 +25,11 @@ html, body {
 
 	overflow:auto;
 
-	box-shadow: 0px 0px 5px rgba(0,0,0,0.7);
-
 	border-top-right-radius: 5px;
 }
 
 #infoList li {
+	display: none;
 	display: block;
 	height: 30px;
 	line-height: 30px;
@@ -43,6 +42,34 @@ html, body {
 	cursor: pointer;
 	background: #4D4D4D;
 	color: white;
+}
+
+#infoBox {
+	display: none;
+	position: absolute;
+	left: 170px;
+	top: 120px;
+	bottom: 0;
+	width: 450px;
+	padding: 15px;
+
+	border-top-right-radius: 6px;
+	background: rgba(255,255,255,0.9);
+}
+
+#close {
+	position: absolute;
+	top:5px;
+	right:5px;
+
+	background: #800026;
+	color: white;
+	padding: 5px;
+	border-radius: 4px;
+}
+
+#infoBox h1 {
+	font-size: 25px;
 }
 
 .info {

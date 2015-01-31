@@ -59,7 +59,7 @@ html, body {
 	bottom: 0;
 	left: 0;
 	top: 120px;
-	width: 150px;
+	width: 175px;
 	margin: 0;
 	padding: 10px;
 
@@ -78,7 +78,7 @@ html, body {
 
 #infoList li {
 	display: block;
-	height: 30px;
+	min-height: 30px;
 	line-height: 30px;
 	width: 100%;
 	color: #4D4D4D;
@@ -100,7 +100,7 @@ html, body {
 #infoBox {
 	display: none;
 	position: absolute;
-	left: 170px;
+	left: 185px;
 	top: 120px;
 	bottom: 0;
 	width: 450px;

@@ -12,8 +12,37 @@ html, body {
 #infoBox {
 
 }
+.extinctionColor {
+	width: 25px;
+	height: 25px;
+	display: inline-block;
+	margin-right: 5px;
+	content: '';
+}
+.ex {
+	background: #800026;
+}
+.ew {
+	background: #BD0026;
+}
+.cr {
+	background: #E31A1C;
+}
+.en {
+	background: #FC4E2A;
+}
+.vu {
+	background: #FD8D3C;
+}
+.nt {
+	background: #FED976;
+}
+.lc {
+	background: #FFEDA0;
+}
 
 #infoList {
+	display: none;
 	background: rgba(255,255,255,0.7);
 	position: absolute;
 	bottom: 0;

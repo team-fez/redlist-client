@@ -9,8 +9,9 @@ html, body {
 	height: 100%;
 }
 
-#infoBox {
-
+#infoBox img {
+	width: 100%;
+	height: auto;
 }
 .extinctionColor {
 	width: 25px;
@@ -81,6 +82,8 @@ html, body {
 	bottom: 0;
 	width: 450px;
 	padding: 15px;
+
+	overflow: auto;
 
 	border-top-right-radius: 6px;
 	background: rgba(255,255,255,0.9);

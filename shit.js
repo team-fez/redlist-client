@@ -120,13 +120,14 @@ function populateExtendedInfo(thingie) {
 	$('#infoBox p').text(thingie.Summary);
 	var imageToUse = false;
 	_.forEach(thingie.Images, function (image) {
-		if(!imageToUse && image.toLowerCase().indexOf('.jpg') !== -1) {
-			imageToUse = image;
+		if(!imageToUse && (image.Url).toLowerCase().indexOf('.jpg') !== -1) {
+			imageToUse = image.Url;
+			console.log(imageToUse);
 		}
 	});
 
 	if(imageToUse) {
-		$('#infoBox img').attr('src', image)
+		$('#infoBox img').attr('src', imageToUse)
 	}
 
 	$('#infoBox a').attr('href', thingie.WikipediaUrl);

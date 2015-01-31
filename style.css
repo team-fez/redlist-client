@@ -15,11 +15,17 @@ html, body {
 	height: auto;
 }
 .extinctionColor {
-	width: 25px;
-	height: 25px;
+	width: 24px;
+	height: 24px;
+
+	position: absolute;
+	left: 3px;
+	top: 3px;
+
 	display: inline-block;
-	margin-right: 5px;
 	content: '';
+
+	border-radius: 50%;
 }
 .ex {
 	background: #800026;
@@ -71,13 +77,15 @@ html, body {
 }
 
 #infoList li {
-	display: none;
 	display: block;
+	display: none;
 	height: 30px;
 	line-height: 30px;
 	width: 100%;
 	color: #4D4D4D;
-	padding-left: 6px;
+	position: relative;
+	box-sizing: border-box;
+	padding-left: 30px;
 	word-break: break-all;
 
 	text-transform: capitalize;

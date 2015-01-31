@@ -90,7 +90,7 @@ function populateSpeciesList(county) {
 			
 		},
 		success: function (species) {
-			console.log(data);
+			console.log(species);
 			$('#infoList').empty();
 			_.forEach(species, function (plant,index) {
 				console.log(plant);

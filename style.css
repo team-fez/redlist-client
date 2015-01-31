@@ -79,6 +79,8 @@ html, body {
 	color: #4D4D4D;
 	padding-left: 6px;
 	word-break: break-all;
+
+	text-transform: capitalize;
 }
 
 #infoList li:hover {

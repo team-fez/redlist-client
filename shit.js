@@ -19,7 +19,7 @@ info.onAdd = function (map) {
 };
 
 info.update = function (props) {
-	this._div.innerHTML = '<h4>Norwegian plant shit</h4>' +  (props ?
+	this._div.innerHTML = '<h4>Endangered species</h4>' +  (props ?
 		'<b>' + props.name + '</b><br />' + props.density + ' people / mi<sup>2</sup>'
 		: 'Hover over a counties');
 };
@@ -57,6 +57,12 @@ function highlightFeature(e) {
 }
 
 var geojson;
+
+geojson = L.geoJson(countiesData, {
+			style: style,
+			onEachFeature: onEachFeature
+		}).addTo(map);
+
 var max;
 
 function resetHighlight(e) {
@@ -108,6 +114,8 @@ legend.onAdd = function (map) {
 	div.innerHTML = labels.join('<br>');
 	return div;
 };
+
+legend.addTo(map);
 
 var control = L.easyButton(
 	'fa-signal', 

@@ -57,6 +57,7 @@ function highlightFeature(e) {
 }
 
 var geojson;
+var max;
 
 function resetHighlight(e) {
 	geojson.resetStyle(e.target);
@@ -105,6 +106,25 @@ legend.onAdd = function (map) {
 	return div;
 };
 
+var control = L.easyButton(
+	'fa-signal', 
+  function () {
+  	options.logaritmicScale = !options.logaritmicScale;
+  	setMax(max);
+  	map.removeLayer(geojson);
+  	geojson = L.geoJson(countiesData, {
+			style: style,
+			onEachFeature: onEachFeature
+		}).addTo(map);
+
+		map.removeControl(legend);
+		legend.addTo(map);
+
+  	console.log(map);
+  },
+  'Logarithmic scale?'
+);
+
 
 var updateCountyDensities = function  updateCountyDensities (data) {
 	console.log(data);
@@ -112,7 +132,7 @@ var updateCountyDensities = function  updateCountyDensities (data) {
 		feature.properties.density = data[feature.properties.NAVN];
 	});
 
-	var max = _.max(data);
+	max = _.max(data);
 
 	setMax(max);
 	console.log(max);

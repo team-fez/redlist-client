@@ -2,7 +2,9 @@ var coloursArray = ['#FFEDA0','#FED976','#FEB24C','#FD8D3C','#FC4E2A','#E31A1C',
 
 var rangeArray = [0,10,20,50,100,200,500,1000];
 
-    var logaritmicScale = false;
+var options = {
+  logaritmicScale: false
+};
 
 // get color depending on population density value
 function getColor(d) 
@@ -18,7 +20,7 @@ function getColor(d)
 
 function setMax(max) 
 {
-    if(logaritmicScale)
+    if(options.logaritmicScale)
     {
         var steps = Math.pow(max, 1/8);
 

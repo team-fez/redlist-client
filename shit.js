@@ -255,7 +255,9 @@ function addMarkers(sightings) {
 	_.forEach(sightings, function(sighting) {
 
 
-		markers.addLayer(new L.Marker(L.latLng(sighting.Latitude.replace(',','.'), sighting.Longitude.replace(',', '.')), { title: "title" }));
+		markers.addLayer(new L.Marker(L.latLng(sighting.Latitude.replace(',','.'), sighting.Longitude.replace(',', '.')), { title: "lon: " + sighting.Longitude + ", lat: " + sighting.Latitude }));
+
+		marker.bindPopup(title);
 	});
 
 	map.addLayer(markers);

@@ -88,7 +88,7 @@ function populateSpeciesList(county) {
 		type: 'GET',
 		dataType: 'jsonp',
 		data: {},
-		url: "http://192.168.2.4:50288/api/Location/GetSpeciesByCounty?county=" + county + "&callback=?",
+		url: serverUrl + "/api/Location/GetSpeciesByCounty?county=" + county + "&callback=?",
 		error: function (jqXHR, textStatus, errorThrown) {
 			
 		},

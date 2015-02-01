@@ -253,9 +253,9 @@ function addMarkers(sightings) {
 	clearMarkers();
 	// Loop through and add markers
 	_.forEach(sightings, function(sighting) {
-
-
-		markers.addLayer(new L.Marker(L.latLng(sighting.Latitude.replace(',','.'), sighting.Longitude.replace(',', '.')), { title: "lon: " + sighting.Longitude + ", lat: " + sighting.Latitude }));
+		var title = "lon: " + sighting.Longitude + ", lat: " + sighting.Latitude ;
+		var marker = new L.Marker(L.latLng(sighting.Latitude.replace(',','.'), sighting.Longitude.replace(',', '.')), { title: title});
+		markers.addLayer(marker);
 
 		marker.bindPopup(title);
 	});

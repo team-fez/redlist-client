@@ -112,7 +112,7 @@ function populateSpeciesList(county) {
 					$(this).addClass('active');
 
 					// Send object
-					populateExtendedInfo(species[$(this).attr('data-id')]);
+					populateExtendedInfo(species[$(this).attr('data-id')], county);
 			});
 
 			$('#infoList').fadeIn(100);
@@ -121,7 +121,7 @@ function populateSpeciesList(county) {
 
 }
 
-function populateExtendedInfo(thingie) {
+function populateExtendedInfo(thingie, county) {
 	$('#infoBox h1').text(thingie.Name + ' (' + thingie.NorwegianName + ')');
 	$('#infoBox p').text(thingie.Summary);
 	var imageToUse = false;
@@ -141,6 +141,8 @@ function populateExtendedInfo(thingie) {
 
 	$('#infoBox a').attr('href', thingie.WikiUrl);
 	$('#infoBox').fadeIn(100);
+
+	getMapMarkers(county, thingie.Name)
 }
 
 function onEachFeature(feature, layer) {
@@ -224,7 +226,7 @@ var updateCountyDensities = function  updateCountyDensities (data) {
 	legend.addTo(map);
 };
 
-function getMapMarkers(species, county){
+function getMapMarkers(county, species){
 	$.ajax({
 		type: 'GET',
 		dataType: 'jsonp',
@@ -234,6 +236,7 @@ function getMapMarkers(species, county){
 			
 		},
 		success: function (sightings) {
+			console.log(sightings);
 			addMarkers(sightings);
 		}
 	});
@@ -243,19 +246,17 @@ var markers = new L.MarkerClusterGroup({ spiderfyOnMaxZoom: true, showCoverageOn
 
 // Add array of markers
 function addMarkers(sightings) {
+	clearMarkers();
 	// Loop through and add markers
 	_.forEach(sightings, function(sighting) {
-		markers.addLayer(new L.Marker(L.latLng(sighting.LONGITUDE, sighting.LATITUDE), { title: "title" }));
+
+
+		markers.addLayer(new L.Marker(L.latLng(sighting.Latitude.replace(',','.'), sighting.Longitude.replace(',', '.')), { title: "title" }));
 	});
 
 	map.addLayer(markers);
 }
 
-
-
-
-
-addMarkers([{lon:0,lat:0}]);
 
 // Remove all markers
 function clearMarkers() {

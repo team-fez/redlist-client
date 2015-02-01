@@ -100,6 +100,10 @@ function populateSpeciesList(county) {
 				var norName = plant.NorwegianName,
 						latinName = plant.Name,
 						category = (plant.Category).toLowerCase();
+
+				if (norName === "") {
+					norName = latinName;
+				}
 				console.log($('#infoList'));
 				$('#infoList').append("<li data-id="+index+'><span class="extinctionColor ' + category + '"></span>' + norName + "</li>");
 			

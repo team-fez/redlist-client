@@ -92,7 +92,6 @@ html, body {
 	box-sizing: border-box;
 	font-size: 14px;
 	padding-left: 35px;
-	word-break: break-all;
 
 	text-transform: capitalize;
 }

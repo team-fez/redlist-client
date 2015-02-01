@@ -105,7 +105,7 @@ function populateSpeciesList(county) {
 					norName = latinName;
 				}
 				console.log($('#infoList'));
-				$('#infoList').append("<li data-id="+index+'><span class="extinctionColor ' + category + '"></span>' + norName + "</li>");
+				$('#infoList').append("<li data-id="+index+'><span class="extinctionColor ' + category + '">'+category+'</span>' + norName + "</li>");
 			
 			});
 

@@ -88,7 +88,7 @@ function populateSpeciesList(county) {
 		type: 'GET',
 		dataType: 'jsonp',
 		data: {},
-		url: "http://192.168.2.4:50288/api/Location/GetSpeciesByCounty?county=" + county + "&callback=?",
+		url: serverUrl + "/api/Location/GetSpeciesByCounty?county=" + county + "&callback=?",
 		error: function (jqXHR, textStatus, errorThrown) {
 			
 		},
@@ -105,7 +105,7 @@ function populateSpeciesList(county) {
 					norName = latinName;
 				}
 				console.log($('#infoList'));
-				$('#infoList').append("<li data-id="+index+'><span class="extinctionColor ' + category + '"></span>' + norName + "</li>");
+				$('#infoList').append("<li data-id="+index+'><span class="extinctionColor ' + category + '">'+category+'</span>' + norName + "</li>");
 			
 			});
 
@@ -116,7 +116,7 @@ function populateSpeciesList(county) {
 					$(this).addClass('active');
 
 					// Send object
-					populateExtendedInfo(species[$(this).attr('data-id')]);
+					populateExtendedInfo(species[$(this).attr('data-id')], county);
 			});
 
 			$('#infoList').fadeIn(100);
@@ -125,7 +125,7 @@ function populateSpeciesList(county) {
 
 }
 
-function populateExtendedInfo(thingie) {
+function populateExtendedInfo(thingie, county) {
 	$('#infoBox h1').text(thingie.Name + ' (' + thingie.NorwegianName + ')');
 	$('#infoBox p').text(thingie.Summary);
 	var imageToUse = false;
@@ -145,6 +145,8 @@ function populateExtendedInfo(thingie) {
 
 	$('#infoBox a').attr('href', thingie.WikiUrl);
 	$('#infoBox').fadeIn(100);
+
+	getMapMarkers(county, thingie.Name)
 }
 
 function onEachFeature(feature, layer) {
@@ -209,7 +211,6 @@ var control = L.easyButton(
   'Logarithmic scale?'
 );
 
-
 var updateCountyDensities = function  updateCountyDensities (data) {
 	console.log(data);
 	_.forEach(countiesData.features, function (feature) {
@@ -228,3 +229,44 @@ var updateCountyDensities = function  updateCountyDensities (data) {
 	map.removeControl(legend);
 	legend.addTo(map);
 };
+
+function getMapMarkers(county, species){
+	$.ajax({
+		type: 'GET',
+		dataType: 'jsonp',
+		data: {},
+		url: serverUrl + "/api/Observation/Get?name="+ species + "&county=" + county + "&callback=?",
+		error: function (jqXHR, textStatus, errorThrown) {
+			
+		},
+		success: function (sightings) {
+			console.log(sightings);
+			addMarkers(sightings);
+		}
+	});
+}
+
+var markers = new L.MarkerClusterGroup({ spiderfyOnMaxZoom: true, showCoverageOnHover: true, zoomToBoundsOnClick: true });
+
+// Add array of markers
+function addMarkers(sightings) {
+	clearMarkers();
+	// Loop through and add markers
+	_.forEach(sightings, function(sighting) {
+
+
+		markers.addLayer(new L.Marker(L.latLng(sighting.Latitude.replace(',','.'), sighting.Longitude.replace(',', '.')), { title: "title" }));
+	});
+
+	map.addLayer(markers);
+}
+
+
+// Remove all markers
+function clearMarkers() {
+	markers.clearLayers();
+}
+
+//setTimeout(clearMarkers, 10000);
+
+

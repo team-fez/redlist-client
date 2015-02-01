@@ -1,13 +1,13 @@
 "use strict";
 
 // Ruben's IP =D
-var serverUrl = "http://192.168.2.4:50288/api/Location/GetCountOnLocation?callback=shait";
+var serverUrl = "http://192.168.2.4:50288";
 
 $.ajax({
         type: 'GET',
         dataType: 'jsonp',
         data: {},
-        url: "http://192.168.2.4:50288/api/Location/GetCountOnLocation?callback=?",
+        url: serverUrl + "/api/Location/GetCountOnLocation?callback=?",
         error: function (jqXHR, textStatus, errorThrown) {
             
         },

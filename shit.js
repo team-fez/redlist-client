@@ -205,7 +205,6 @@ var control = L.easyButton(
   'Logarithmic scale?'
 );
 
-
 var updateCountyDensities = function  updateCountyDensities (data) {
 	console.log(data);
 	_.forEach(countiesData.features, function (feature) {
@@ -224,3 +223,45 @@ var updateCountyDensities = function  updateCountyDensities (data) {
 	map.removeControl(legend);
 	legend.addTo(map);
 };
+
+function getMapMarkers(species, county){
+	$.ajax({
+		type: 'GET',
+		dataType: 'jsonp',
+		data: {},
+		url: serverUrl + "/api/Observation/Get?name="+ species + "&county=" + county + "&callback=?",
+		error: function (jqXHR, textStatus, errorThrown) {
+			
+		},
+		success: function (sightings) {
+			addMarkers(sightings);
+		}
+	});
+}
+
+var markers = new L.MarkerClusterGroup({ spiderfyOnMaxZoom: true, showCoverageOnHover: true, zoomToBoundsOnClick: true });
+
+// Add array of markers
+function addMarkers(sightings) {
+	// Loop through and add markers
+	_.forEach(sightings, function(sighting) {
+		markers.addLayer(new L.Marker(L.latLng(sighting.LONGITUDE, sighting.LATITUDE), { title: "title" }));
+	});
+
+	map.addLayer(markers);
+}
+
+
+
+
+
+addMarkers([{lon:0,lat:0}]);
+
+// Remove all markers
+function clearMarkers() {
+	markers.clearLayers();
+}
+
+//setTimeout(clearMarkers, 10000);
+
+
